@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/cruces"
+        android:id="@+id/action_cruces"
+        android:icon="@android:drawable/ic_popup_sync" />
+
+    <item android:title="@string/perfil"
+        android:id="@+id/action_perfil"
+        android:icon="@android:drawable/ic_menu_myplaces" />
+
+
+</menu>
