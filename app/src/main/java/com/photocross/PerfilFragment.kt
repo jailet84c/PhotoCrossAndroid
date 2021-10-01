@@ -24,22 +24,21 @@ class PerfilFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val rootview = inflater.inflate(R.layout.fragment_perfil, container, false)
+
         recyclerview = rootview.findViewById(R.id.recyclerGaleria) as RecyclerView
         recyclerview.layoutManager = LinearLayoutManager(activity)
         recyclerview.adapter = AdapterGaleria()
-        return rootview
-
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         getFotosGaleria()
+
+        return rootview
     }
 
     fun getFotosGaleria(): MutableList<FotosGaleria>{
-        var fotosgaleria : MutableList<FotosGaleria> = ArrayList()
+        val fotosgaleria : MutableList<FotosGaleria> = ArrayList()
         fotosgaleria.add(FotosGaleria("Foto Nova", "https://cursokotlin.com/wp-content/uploads/2017/07/logan.jpeg"))
+        fotosgaleria.add(FotosGaleria("ujhu Nova", "https://cursokotlin.com/wp-content/uploads/2017/07/logan.jpeg"))
+        fotosgaleria.add(FotosGaleria("Fotkikkko Nova", "https://cursokotlin.com/wp-content/uploads/2017/07/logan.jpeg"))
         return fotosgaleria
     }
 }
@@ -68,17 +67,14 @@ class AdapterGaleria : RecyclerView.Adapter<AdapterGaleria.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        val nomFoto = view.findViewById(R.id.tvFotoGaleria) as TextView
-        val fotoGaleria = view.findViewById(R.id.imagenGaleria) as ImageView
+        var nomFoto = view.findViewById(R.id.tvFotoGaleria) as TextView
+        var fotoGaleria = view.findViewById(R.id.imagenGaleria) as ImageView
 
         fun bind(fotosgaleria: FotosGaleria, context: Context) {
 
             nomFoto.text = fotosgaleria.nombrefoto
             itemView.setOnClickListener(View.OnClickListener {
-                Toast.makeText(
-                    context, fotosgaleria.nombrefoto,
-                    Toast.LENGTH_LONG
-                ).show()
+                Toast.makeText(context, fotosgaleria.nombrefoto, Toast.LENGTH_LONG).show()
             })
             fotoGaleria.loadUrl(fotosgaleria.foto)
         }
